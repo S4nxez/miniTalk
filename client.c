@@ -6,13 +6,19 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/29 18:44:16 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/29 19:04:13 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-volatile sig_atomic_t g_server;
+volatile sig_atomic_t g_server = BUSY;
+
+void	end_handler(int signo)
+{
+	write(STDOUT_FILENO, "200\n", 4);
+	exit(EXIT_SUCCESS);
+}
 
 void	ack_handler(int signo)
 {
@@ -35,6 +41,7 @@ void	send_char(char c, pid_t server)
 		bit++;
 		while(g_server == BUSY)
 			usleep(42);
+		g_server = BUSY;
 	}
 }
 
@@ -43,9 +50,9 @@ int main(int argc, char **argv)
 	pid_t server;
 	char *message;
 
-	if (3 != ac)
+	if (3 != argc)
 	{
-		fputs("Usage = ./goku <PID> \"Message\"\n", stderr);
+		fputs("Usage = ./client <PID> \"Message\"\n", stderr);
 		exit(EXIT_FAILURE);
 	}
 	server = atoi(argv[1]);
