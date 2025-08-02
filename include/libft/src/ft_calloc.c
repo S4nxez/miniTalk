@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/02 20:02:40 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/01/24 18:23:10 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/02/11 10:13:11 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdio.h>// TODO revisar qué librerías meto
-# include <stdlib.h>
-# include <stdbool.h>
-# include <limits.h>
-# include "ft_printf.h"
-# include "libft.h"
-
-enum
+void	*ft_calloc(size_t count, size_t size)
 {
-	READY,
-	BUSY
-};
+	unsigned char	*ptr;
+	size_t			i;
 
-void	ft_signal(int signo, void *handler, bool use_siginfo);
-void	ft_kill(pid_t pid, int signo);
-#endif
+	i = 0;
+	ptr = (unsigned char *)malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	while (i < count * size)
+		ptr[i++] = 0;
+	return (ptr);
+}

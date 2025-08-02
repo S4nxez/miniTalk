@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/02 20:02:40 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/01/21 08:54:28 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/01/21 10:38:31 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef MINITALK_H
-# define MINITALK_H
-
-# include <signal.h>
-# include <unistd.h>
-# include <stdio.h>// TODO revisar qué librerías meto
-# include <stdlib.h>
-# include <stdbool.h>
-# include <limits.h>
-# include "ft_printf.h"
-# include "libft.h"
-
-enum
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	READY,
-	BUSY
-};
+	unsigned char	*s_aux;
+	unsigned char	c_aux;
+	size_t			i;
 
-void	ft_signal(int signo, void *handler, bool use_siginfo);
-void	ft_kill(pid_t pid, int signo);
-#endif
+	s_aux = (unsigned char *)s;
+	c_aux = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		if (s_aux[i] == c_aux)
+			return ((void *)&s_aux[i]);
+		i++;
+	}
+	return (NULL);
+}

@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/02 20:02:40 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/01/24 18:34:31 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/02/11 10:21:07 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdio.h>// TODO revisar qué librerías meto
-# include <stdlib.h>
-# include <stdbool.h>
-# include <limits.h>
-# include "ft_printf.h"
-# include "libft.h"
-
-enum
+char	*ft_strdup(const char *s1)
 {
-	READY,
-	BUSY
-};
+	char	*ptr;
+	size_t	i;
 
-void	ft_signal(int signo, void *handler, bool use_siginfo);
-void	ft_kill(pid_t pid, int signo);
-#endif
+	ptr = malloc(ft_strlen(s1) + 1);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+
+/*
+int main(void)
+{
+	char *str = "hola";
+	char *str2 = ft_strdup(str);
+	printf("str2: %s\n", str2);
+	return (0);
+}*/

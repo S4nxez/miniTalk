@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/02 20:02:40 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/01/15 19:44:55 by dansanc3          #+#    #+#             */
+/*   Updated: 2025/07/08 18:01:32 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdio.h>// TODO revisar qué librerías meto
-# include <stdlib.h>
-# include <stdbool.h>
-# include <limits.h>
-# include "ft_printf.h"
-# include "libft.h"
-
-enum
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	READY,
-	BUSY
-};
+	size_t	srcsize;
 
-void	ft_signal(int signo, void *handler, bool use_siginfo);
-void	ft_kill(pid_t pid, int signo);
-#endif
+	srcsize = ft_strlen(src);
+	if (srcsize + 1 < dstsize)
+		ft_memcpy(dst, src, srcsize + 1);
+	else if (dstsize != 0)
+	{
+		ft_memcpy(dst, src, dstsize - 1);
+		dst[dstsize - 1] = '\0';
+	}
+	return (srcsize);
+}

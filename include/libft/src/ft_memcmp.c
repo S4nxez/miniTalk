@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/02 20:02:40 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/01/21 09:45:26 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/02/11 10:17:04 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdio.h>// TODO revisar qué librerías meto
-# include <stdlib.h>
-# include <stdbool.h>
-# include <limits.h>
-# include "ft_printf.h"
-# include "libft.h"
-
-enum
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	READY,
-	BUSY
-};
+	unsigned char	*s1_aux;
+	unsigned char	*s2_aux;
+	size_t			i;
 
-void	ft_signal(int signo, void *handler, bool use_siginfo);
-void	ft_kill(pid_t pid, int signo);
-#endif
+	s1_aux = (unsigned char *) s1;
+	s2_aux = (unsigned char *) s2;
+	i = 0;
+	while (i < n)
+	{
+		if (s1_aux[i] != s2_aux[i])
+			return (s1_aux[i] - s2_aux[i]);
+		i++;
+	}
+	return (0);
+}
