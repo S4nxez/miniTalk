@@ -56,3 +56,7 @@ dkms.conf
 
 # Vscode
 .vscode/
+
+# Executables
+server
+cient

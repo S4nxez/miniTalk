@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:44:46 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/02 19:56:24 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:10:37 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_kill(pid_t pid, int signal)
 		ft_putstr_fd("Error. The PID must be greater than 0", 2);
 	if (kill(pid, signal) < 0)
 	{
-		ft_putstr_fd("ft_kill failed",2);
+		ft_putstr_fd("ft_kill failed", 2);
 		exit(EXIT_FAILURE);
 	}
 }

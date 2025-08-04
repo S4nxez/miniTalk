@@ -294,7 +294,7 @@ minitalk/
 
 <div align="center">
 
-**Developed with ❤️ by [s4nxez](https://github.com/s4nxez)**
+**Developed by [s4nxez](https://github.com/s4nxez)**
 
 *42 Madrid School Project*
 
