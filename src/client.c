@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/04 20:47:19 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/08/05 16:31:55 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 volatile sig_atomic_t	g_server = BUSY;
-
-
 
 void	ack_handler(void)
 {
@@ -33,6 +31,8 @@ void	send_char(char c, pid_t server)
 		else
 			ft_kill(server, SIGUSR2);
 		bit++;
+		if (bit == 8 && c == '\0')
+			exit(EXIT_SUCCESS);
 		while (g_server == BUSY)
 			usleep(1);
 		g_server = BUSY;
