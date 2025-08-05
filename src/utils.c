@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:44:46 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/04 20:50:47 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/08/05 16:42:34 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	ft_signal(int signal, void *handler, bool use_siginfo)
 void	ft_kill(pid_t pid, int signal)
 {
 	if (pid < 0)
-		ft_putstr_fd("Error. The PID must be greater than 0", 2);
+		ft_putstr_fd("Error. The PID must be greater than 0\n", 2);
 	if (kill(pid, signal) < 0)
 	{
-		ft_putstr_fd("ft_kill failed", 2);
+		ft_putstr_fd("ft_kill failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
 }

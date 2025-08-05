@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/03 22:58:11 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/08/05 16:58:08 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ int	main(int argc, char **argv)
 
 	if (3 != argc)
 	{
-		ft_putstr_fd("Usage = ./client <PID> \"Message\"\n", 2);
+		ft_putstr_fd("Usage ./client <PID> \"Message\"\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	server = ft_atoi(argv[1]);
 	if (server == 0)
 	{
-		ft_putstr_fd("Invalid input, PID must be a number", 2);
+		ft_putstr_fd("PID must be a number\n", 2);
 		return (EXIT_FAILURE);
 	}
 	ft_signal(SIGUSR1, ack_handler, false);
