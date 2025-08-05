@@ -6,13 +6,20 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:44:16 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/04 17:06:03 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/08/04 20:47:19 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 volatile sig_atomic_t	g_server = BUSY;
+
+
+
+void	ack_handler(void)
+{
+	g_server = READY;
+}
 
 void	send_char(char c, pid_t server)
 {
@@ -47,6 +54,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Invalid input, PID must be a number", 2);
 		return (EXIT_FAILURE);
 	}
+	ft_signal(SIGUSR1, ack_handler, false);
 	while (*argv[2])
 		send_char(*argv[2]++, server);
 	send_char('\0', server);

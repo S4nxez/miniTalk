@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:44:38 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/08/04 19:08:59 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/08/04 20:49:23 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	handler(int signal, siginfo_t *info, void *more_info)
 	if (CHAR_BIT == bit_len)
 	{
 		bit_len = 0;
+		if (c == '\0')
+		{
+			write(STDOUT_FILENO, "\n", 1);
+			return ;
+		}
 		write(STDOUT_FILENO, &c, 1);
 	}
 	ft_kill(client, SIGUSR1);
@@ -37,6 +42,7 @@ int	main(void)
 {
 	ft_printf("PID: %d\n", getpid());
 	ft_signal(SIGUSR1, handler, true);
+	ft_signal(SIGUSR2, handler, true);
 	while (1)
 		pause();
 	return (EXIT_SUCCESS);
