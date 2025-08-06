@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+         #
+#    By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/02 18:46:52 by dansanc3          #+#    #+#              #
-#    Updated: 2025/08/04 19:29:23 by dansanc3         ###   ########.fr        #
+#    Updated: 2025/08/05 17:05:13 by dansanc3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ $(CLIENT_BONUS): $(OBJ_CLIENT_BONUS) $(FT_PRINTF) $(LIBFT)
 clean:
 	@cd $(FT_PRINTF_DIR) && make clean
 	@cd $(LIBFT_DIR) && make clean
-	@rm -f $(OBJ_SERVER) $(OBJ_CLIENT) $(SERVER) $(CLIENT) $(OBJ_SERVER_BONUS) $(OBJ_CLIENT_BONUS)
+	@rm -f $(OBJ_SERVER) $(OBJ_CLIENT) $(SERVER) $(CLIENT) $(OBJ_SERVER_BONUS) $(OBJ_CLIENT_BONUS) $(SERVER_BONUS) $(CLIENT_BONUS)
 
 fclean: clean
 	@cd $(FT_PRINTF_DIR) && make fclean
